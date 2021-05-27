@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 import model.dao.DaoFactory;
 import model.dao.SellerDao;
+import model.dao.impl.DepartmentDaoJDBC;
 import model.entities.Department;
 import model.entities.Seller;
 
@@ -42,6 +43,41 @@ public class Program {
         System.out.println("Delete completed");
         teclado.close();
         
+
+            // ======= Tests for Departments =========
+            
+        DepartmentDaoJDBC depart = DaoFactory.createDepartmentDao();
+        
+        System.out.println("=== Find by ID === ");
+        Department depar = depart.findById(2);
+        System.out.println(depar);
+        
+        List<Department> demp = depart.findAll();
+        System.out.println("=== Find All ===");
+        demp.forEach((x) -> {
+            System.out.println(x);
+        });
+        
+        System.out.println("--- Insert Into ---");
+        Department n = new Department();
+        n.setName("Logistica");
+        depart.insert(n);
+        System.out.println("Inserted completed!");
+        System.out.println();
+        
+        System.out.println("-=- Delete -=-");
+        depart.deleteById(3);
+        System.out.println("Delete completed");
+        System.out.println();
+        
+        System.out.println("-== Update ==-");
+        Department y = new Department();
+        // Set name
+        y.setName("Viagens");
+        // in this ID
+        y.setId(5);
+        depart.update(y);
+        System.out.println("Update completed!");
 
     }
 
