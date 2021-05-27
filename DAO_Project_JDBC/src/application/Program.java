@@ -3,20 +3,15 @@ package application;
 import db.DB;
 import java.sql.Connection;
 import java.sql.Statement;
+import model.entities.Department;
 
 public class Program {
 
     public static void main(String[] args) {
-        Connection conn = null;
-        Statement st = null;
-        try{
-            
-        } finally {
-            DB.closeStatement(st);
-            DB.closeConnection();
-        }
-
-
+       
+        Department obj = new Department(1, "books");
+        System.out.println(obj);
+        
     }
 
     
